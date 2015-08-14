@@ -59,3 +59,8 @@ exchange <- function(item){activity_list[[item]]} #create a utility function to 
 activity <- sapply(label_column, exchange) #create activity column as vector
 variables_of_interest <- variables_of_interest %>% mutate(activity) %>% select(-label) %>%
   arrange(subject, activity)#add activity col, delete label col, arrange rows by subject and activity
+
+# now perform the operations to generate the final table
+summary_table <- group_by(variables_of_interest, activity, subject)
+summary_table <- summarise_each(summary_table, funs(mean))
+colnames(summary_table)[3:69] <- paste("Mean_of", colnames(summary_table)[3:69], sep = "_")
