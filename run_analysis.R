@@ -1,3 +1,6 @@
+# This script produces an output when the working directory contains the unzipped UCI HAR dataset
+# Uncomment the lines below to download the original file into an EMPTY directory and unzip it.
+
 # setwd(<choose an empty directory for the project>)
 # download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", "project_data.zip", method = "curl")
 # data_folders <- list.files() #returns only one filename, "project_data.zip" because we started with an empty directory
@@ -35,6 +38,8 @@ train_set_complete <-  mutate(train_set, subject, label)
 # now merge the train and test sets
 complete_set <- merge(test_set_complete, train_set_complete, all=TRUE) #merge the train and test sets
 # identical(colnames(train_set), colnames(test_set)) let's just be sure the data colnames are identical!
+# rm(test_set) #optionally clean-up environment
+# rm(training_set) #optionally clean-up environment
 
 # change the colnames to the descriptive names of the corresponding features
 # so we can select the variables of interest, mean and std, by name
@@ -46,12 +51,12 @@ if(!identical(make.names(feature_names), feature_names))
   {feature_names <-  make.names(feature_names, unique = TRUE)} #be sure the var names are valid R names, some original names contain ()
 complete_set_with_feature_named_cols <- `colnames<-`(complete_set, feature_names) #finally add the feature names as colnames
 
-# rm(complete_set) #optionaly clean-up environment
+# rm(complete_set) #optionally clean-up environment
 
 variables_of_interest <- select(complete_set_with_feature_named_cols, contains("std.."), contains("mean.."), subject, label) #select columns with mean and std
 # rm(complete_set_with_feature_named_cols) #optionaly clean-up environment
 
-# use descriptive activity names instead of "label" integer value
+# use descriptive activity names instead of "label" column integer values
 activity_table <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors = FALSE)
 activity_list <- as.list(activity_table[,2]) # here was take a 2-col table and make a list so we can look up names based on integers
 label_column <- variables_of_interest[["label"]] #extract the label col as a vector
@@ -63,4 +68,5 @@ variables_of_interest <- variables_of_interest %>% mutate(activity) %>% select(-
 # now perform the operations to generate the final table
 summary_table <- group_by(variables_of_interest, activity, subject)
 summary_table <- summarise_each(summary_table, funs(mean))
-colnames(summary_table)[3:69] <- paste("Mean_of", colnames(summary_table)[3:69], sep = "_")
+colnames(summary_table)[3:69] <- paste("Mean_of", colnames(summary_table)[3:69], sep = "_") #make sure we update the var names to reflect the operations performed by summarize_each()
+
