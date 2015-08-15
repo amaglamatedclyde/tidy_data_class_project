@@ -75,3 +75,4 @@ colnames(summary_table)[3:88] <- paste("meanof", colnames(summary_table)[3:88], 
 #format variable names as recommended in video lecture Week 4 "Editing Text Variables"
 colnames(summary_table) <- tolower(colnames(summary_table))
 colnames(summary_table) <- gsub("\\.", "", colnames(summary_table))
+summary_table <- data.frame(summary_table) #collapse the class inheritance structure to data.frame
