@@ -1,4 +1,5 @@
-# tidy_data_class_project
+# Tidy Data Class Project
+## Cleaning the UCI HAR Dataset
 This repo contains my submissions for the 'Getting and Cleaning Data' class project
 
 The script file 'run_analysis.R' produces a table that summarizes the UCI HAR Dataset. The final table

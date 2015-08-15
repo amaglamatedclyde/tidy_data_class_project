@@ -38,9 +38,10 @@ train_set_complete <-  mutate(train_set, subject, label)
 # now merge the train and test sets
 complete_set <- merge(test_set_complete, train_set_complete, all=TRUE) #merge the train and test sets
 # identical(colnames(train_set), colnames(test_set)) let's just be sure the data colnames are identical!
-# rm(test_set) #optionally clean-up environment
-# rm(training_set) #optionally clean-up environment
-
+#clean-up environment
+rm(list = c("test_set", "test_set_complete", "test_set_labels", "test_set_subjects", "train_set", 
+            "train_set_complete", "train_set_labels", "train_set_subjects", "test_set_path", "train_set_path", 
+            "test_set_subject_path","train_set_subject_path", "test_set_label_path", "train_set_label_path"))
 # change the colnames to the descriptive names of the corresponding features
 # so we can select the variables of interest, mean and std, by name
 feature_label_path <- "UCI HAR Dataset/features.txt"
@@ -51,10 +52,11 @@ if(!identical(make.names(feature_names), feature_names))
   {feature_names <-  make.names(feature_names, unique = TRUE)} #be sure the var names are valid R names, some original names contain ()
 complete_set_with_feature_named_cols <- `colnames<-`(complete_set, feature_names) #finally add the feature names as colnames
 
-# rm(complete_set) #optionally clean-up environment
+rm(list = c("complete_set", "feature_table", "feature_names", "feature_label_path")) #optionally clean-up environment
 
-variables_of_interest <- select(complete_set_with_feature_named_cols, contains("std.."), contains("mean.."), subject, label) #select columns with mean and std
-# rm(complete_set_with_feature_named_cols) #optionaly clean-up environment
+variables_of_interest <- select(complete_set_with_feature_named_cols, contains("std.."), contains("mean"), subject, label) #select columns with mean and std
+
+rm(complete_set_with_feature_named_cols) #optionaly clean-up environment
 
 # use descriptive activity names instead of "label" column integer values
 activity_table <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors = FALSE)
@@ -64,9 +66,12 @@ exchange <- function(item){activity_list[[item]]} #create a utility function to 
 activity <- sapply(label_column, exchange) #create activity column as vector
 variables_of_interest <- variables_of_interest %>% mutate(activity) %>% select(-label) %>%
   arrange(subject, activity)#add activity col, delete label col, arrange rows by subject and activity
-
+rm(list = c("activity", "activity_list"))
 # now perform the operations to generate the final table
 summary_table <- group_by(variables_of_interest, activity, subject)
+rm(list = c("variables_of_interest", "activity_table", "exchange", "label", "label_column", "subject"))
 summary_table <- summarise_each(summary_table, funs(mean))
-colnames(summary_table)[3:69] <- paste("Mean_of", colnames(summary_table)[3:69], sep = "_") #make sure we update the var names to reflect the operations performed by summarize_each()
-
+colnames(summary_table)[3:88] <- paste("meanof", colnames(summary_table)[3:88], sep = "") #make sure we update the var names to reflect the operations performed by summarize_each()
+#format variable names as recommended in video lecture Week 4 "Editing Text Variables"
+colnames(summary_table) <- tolower(colnames(summary_table))
+colnames(summary_table) <- gsub("\\.", "", colnames(summary_table))
