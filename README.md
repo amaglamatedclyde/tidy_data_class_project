@@ -1,4 +1,4 @@
-<center># Tidy Data Class Project</center>
+# Tidy Data Class Project</center>
 ## Cleaning the UCI HAR Dataset
 This repo contains my submissions for the 'Getting and Cleaning Data' class project
 
