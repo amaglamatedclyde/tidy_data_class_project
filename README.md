@@ -3,7 +3,7 @@
 This repo contains my submissions for the 'Getting and Cleaning Data' class project
 
 The script file 'run_analysis.R' produces a table that summarizes the UCI HAR Dataset. The final table
-is called 'summary_table' and consists of 180 observations of 69 variables.
+is called 'summary_table' and consists of 180 observations of 88 variables.
 
 This dataset consists of 10299 observations of 561 variables, split into two sets of observations. The observed variables are accelerometer and gyroscope data collected from 30 test subjects as they performed multiple trials of six different activites: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING.
 
@@ -19,5 +19,5 @@ This dataset consists of 10299 observations of 561 variables, split into two set
 
 * Finally, we eliminate periods and uppercase letters and we collapse the class inheritance structure of the summary_table to data.frame
 
-Note that there are optional lines to clean-up the environment by deleting interemediate variables after they are no loner needed.
+Note that there are optional lines to clean-up the environment by deleting interemediate variables after they are no longer needed.
 
