@@ -97,8 +97,8 @@ These were derived in the following manner:
 *In accordance with best practices for R variable names, the variables were converted to lower case and all of the following characters were removed: ._()
 ##Below are listed the original UCI HAR Dataset variable names followed by information describing their meaning
 
-1 tBodyAcc-mean()-X
-2 tBodyAcc-mean()-Y
+1. tBodyAcc-mean()-X
+2. tBodyAcc-mean()-Y
 3 tBodyAcc-mean()-Z
 4 tBodyAcc-std()-X
 5 tBodyAcc-std()-Y
