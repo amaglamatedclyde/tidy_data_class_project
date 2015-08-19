@@ -17,5 +17,7 @@ This dataset consists of 10299 observations of 561 variables, split into two set
 
 * To create the final table of interest, we group the set of variables-of-interes by activity and subject. We then calculate the mean for activity variables across all subjects. This is supplied as the summary_table.
 
+* Finally, we eliminate periods and uppercase letters and we collapse the class inheritance structure of the summary_table to data.frame
+
 Note that there are optional lines to clean-up the environment by deleting interemediate variables after they are no loner needed.
 
