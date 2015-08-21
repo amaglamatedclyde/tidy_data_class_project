@@ -13,7 +13,7 @@
 
 library(dplyr)
 
-#first load the tables from the test set folder. they are X_test, y_test, subject_test and 
+#first load the tables from the test set folder. they are X_test, y_test, and subject_test 
 test_set_path <- "UCI HAR Dataset/test/X_test.txt"
 test_set_label_path <- "UCI HAR Dataset/test/y_test.txt"
 test_set_subject_path <- "UCI HAR Dataset/test/subject_test.txt"
@@ -42,6 +42,7 @@ complete_set <- merge(test_set_complete, train_set_complete, all=TRUE) #merge th
 rm(list = c("test_set", "test_set_complete", "test_set_labels", "test_set_subjects", "train_set", 
             "train_set_complete", "train_set_labels", "train_set_subjects", "test_set_path", "train_set_path", 
             "test_set_subject_path","train_set_subject_path", "test_set_label_path", "train_set_label_path"))
+
 # change the colnames to the descriptive names of the corresponding features
 # so we can select the variables of interest, mean and std, by name
 feature_label_path <- "UCI HAR Dataset/features.txt"
@@ -54,9 +55,10 @@ complete_set_with_feature_named_cols <- `colnames<-`(complete_set, feature_names
 
 rm(list = c("complete_set", "feature_table", "feature_names", "feature_label_path")) #optionally clean-up environment
 
+#subset the data to retain only variables with "mean" and "std(). see README.md for explanation
 variables_of_interest <- select(complete_set_with_feature_named_cols, contains("std.."), contains("mean"), subject, label) #select columns with mean and std
 
-rm(complete_set_with_feature_named_cols) #optionaly clean-up environment
+rm(complete_set_with_feature_named_cols) #optionally clean-up environment
 
 # use descriptive activity names instead of "label" column integer values
 activity_table <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors = FALSE)
@@ -64,15 +66,19 @@ activity_list <- as.list(activity_table[,2]) # here was take a 2-col table and m
 label_column <- variables_of_interest[["label"]] #extract the label col as a vector
 exchange <- function(item){activity_list[[item]]} #create a utility function to transform labels into activity names
 activity <- sapply(label_column, exchange) #create activity column as vector
+
 variables_of_interest <- variables_of_interest %>% mutate(activity) %>% select(-label) %>%
   arrange(subject, activity)#add activity col, delete label col, arrange rows by subject and activity
 rm(list = c("activity", "activity_list"))
+
 # now perform the operations to generate the final table
 summary_table <- group_by(variables_of_interest, activity, subject)
 rm(list = c("variables_of_interest", "activity_table", "exchange", "label", "label_column", "subject"))
 summary_table <- summarise_each(summary_table, funs(mean))
 colnames(summary_table)[3:88] <- paste("meanof", colnames(summary_table)[3:88], sep = "") #make sure we update the var names to reflect the operations performed by summarize_each()
+
 #format variable names as recommended in video lecture Week 4 "Editing Text Variables"
 colnames(summary_table) <- tolower(colnames(summary_table))
 colnames(summary_table) <- gsub("\\.", "", colnames(summary_table))
+
 summary_table <- data.frame(summary_table) #collapse the class inheritance structure to data.frame

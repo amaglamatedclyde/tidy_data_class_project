@@ -1,100 +1,105 @@
-#Variable Names
+#Tidy Data Code Book
+##This document contains the following information:
+*Final variable names for the table produced by the run_analysis.R script.
+*Original varaible names from the UCI HAR Dataset
+*The original explanatory descritions of the naming conventions and the measurements they name.
 
-The final variable names for the summary_table are as follows:
+The final variable names for the summary_table are listed below. These were derived in the following manner:
 
-"activity"
-"subject"
-"meanoftbodyaccstdx"
-"meanoftbodyaccstdy"
-"meanoftbodyaccstdz"
-"meanoftgravityaccstdx"
-"meanoftgravityaccstdy"
-"meanoftgravityaccstdz"
-"meanoftbodyaccjerkstdx"
-"meanoftbodyaccjerkstdy"
-"meanoftbodyaccjerkstdz"
-"meanoftbodygyrostdx"
-"meanoftbodygyrostdy"
-"meanoftbodygyrostdz"
-"meanoftbodygyrojerkstdx"
-"meanoftbodygyrojerkstdy"
-"meanoftbodygyrojerkstdz"
-"meanoftbodyaccmagstd"
-"meanoftgravityaccmagstd"
-"meanoftbodyaccjerkmagstd"
-"meanoftbodygyromagstd"
-"meanoftbodygyrojerkmagstd"
-"meanoffbodyaccstdx"
-"meanoffbodyaccstdy"
-"meanoffbodyaccstdz"
-"meanoffbodyaccjerkstdx"
-"meanoffbodyaccjerkstdy"
-"meanoffbodyaccjerkstdz"
-"meanoffbodygyrostdx"
-"meanoffbodygyrostdy"
-"meanoffbodygyrostdz"
-"meanoffbodyaccmagstd"
-"meanoffbodybodyaccjerkmagstd"
-"meanoffbodybodygyromagstd"
-"meanoffbodybodygyrojerkmagstd"
-"meanoftbodyaccmeanx"
-"meanoftbodyaccmeany"
-"meanoftbodyaccmeanz"
-"meanoftgravityaccmeanx"
-"meanoftgravityaccmeany"
-"meanoftgravityaccmeanz"
-"meanoftbodyaccjerkmeanx"
-"meanoftbodyaccjerkmeany"
-"meanoftbodyaccjerkmeanz"
-"meanoftbodygyromeanx"
-"meanoftbodygyromeany"
-"meanoftbodygyromeanz"
-"meanoftbodygyrojerkmeanx"
-"meanoftbodygyrojerkmeany"
-"meanoftbodygyrojerkmeanz"
-"meanoftbodyaccmagmean"
-"meanoftgravityaccmagmean"
-"meanoftbodyaccjerkmagmean"
-"meanoftbodygyromagmean"
-"meanoftbodygyrojerkmagmean"
-"meanoffbodyaccmeanx"
-"meanoffbodyaccmeany"
-"meanoffbodyaccmeanz"
-"meanoffbodyaccmeanfreqx"
-"meanoffbodyaccmeanfreqy"
-"meanoffbodyaccmeanfreqz"
-"meanoffbodyaccjerkmeanx"
-"meanoffbodyaccjerkmeany"
-"meanoffbodyaccjerkmeanz"
-"meanoffbodyaccjerkmeanfreqx"
-"meanoffbodyaccjerkmeanfreqy"
-"meanoffbodyaccjerkmeanfreqz"
-"meanoffbodygyromeanx"
-"meanoffbodygyromeany"
-"meanoffbodygyromeanz"
-"meanoffbodygyromeanfreqx"
-"meanoffbodygyromeanfreqy"
-"meanoffbodygyromeanfreqz"
-"meanoffbodyaccmagmean"
-"meanoffbodyaccmagmeanfreq"
-"meanoffbodybodyaccjerkmagmean"
-"meanoffbodybodyaccjerkmagmeanfreq"
-"meanoffbodybodygyromagmean"
-"meanoffbodybodygyromagmeanfreq"
-"meanoffbodybodygyrojerkmagmean"
-"meanoffbodybodygyrojerkmagmeanfreq"
-"meanofangletbodyaccmeangravity"
-"meanofangletbodyaccjerkmeangravitymean"
-"meanofangletbodygyromeangravitymean"
-"meanofangletbodygyrojerkmeangravitymean"
-"meanofanglexgravitymean"
-"meanofangleygravitymean"
-"meanofanglezgravitymean"
-
-These were derived in the following manner:
-*A subset of the original variables from the UCI HAR Dataset was created by selecting all variables with mean, mean() aand std() in the names
-*To indicate that the operations on the dataset produced a summary table by caluclating the mean of each variable in the subset, the names were prepended by "meanof."
+*A subset of the original variables from the UCI HAR Dataset was created by selecting all variables with mean, mean() and std() in the variable names.
+*The names were prepended by "meanof" to indicate that the operations on the dataset produced a summary table by calculating the mean of each variable in the subset.
 *In accordance with best practices for R variable names, the variables were converted to lower case and all of the following characters were removed: ._()
+
+###Final Variable Names
+1. activity
+2. subject
+3. meanoftbodyaccstdx
+4. meanoftbodyaccstdy
+5. meanoftbodyaccstdz
+6. meanoftgravityaccstdx
+7. meanoftgravityaccstdy
+8. meanoftgravityaccstdz
+9. meanoftbodyaccjerkstdx
+10. meanoftbodyaccjerkstdy
+11. meanoftbodyaccjerkstdz
+12. meanoftbodygyrostdx
+13. meanoftbodygyrostdy
+14. meanoftbodygyrostdz
+15. meanoftbodygyrojerkstdx
+16. meanoftbodygyrojerkstdy
+17. meanoftbodygyrojerkstdz
+18. meanoftbodyaccmagstd
+19. meanoftgravityaccmagstd
+20. meanoftbodyaccjerkmagstd
+21. meanoftbodygyromagstd
+22. meanoftbodygyrojerkmagstd
+23. meanoffbodyaccstdx
+24. meanoffbodyaccstdy
+25. meanoffbodyaccstdz
+26. meanoffbodyaccjerkstdx
+27. meanoffbodyaccjerkstdy
+28. meanoffbodyaccjerkstdz
+29. meanoffbodygyrostdx
+30. meanoffbodygyrostdy
+31. meanoffbodygyrostdz
+32. meanoffbodyaccmagstd
+33. meanoffbodybodyaccjerkmagstd
+34. meanoffbodybodygyromagstd
+35. meanoffbodybodygyrojerkmagstd
+36. meanoftbodyaccmeanx
+37. meanoftbodyaccmeany
+38. meanoftbodyaccmeanz
+39. meanoftgravityaccmeanx
+40. meanoftgravityaccmeany
+41. meanoftgravityaccmeanz
+42. meanoftbodyaccjerkmeanx
+43. meanoftbodyaccjerkmeany
+44. meanoftbodyaccjerkmeanz
+45. meanoftbodygyromeanx
+46. meanoftbodygyromeany
+47. meanoftbodygyromeanz
+48. meanoftbodygyrojerkmeanx
+49. meanoftbodygyrojerkmeany
+50. meanoftbodygyrojerkmeanz
+51. meanoftbodyaccmagmean
+52. meanoftgravityaccmagmean
+53. meanoftbodyaccjerkmagmean
+54. meanoftbodygyromagmean
+55. meanoftbodygyrojerkmagmean
+56. meanoffbodyaccmeanx
+57. meanoffbodyaccmeany
+58. meanoffbodyaccmeanz
+59. meanoffbodyaccmeanfreqx
+60. meanoffbodyaccmeanfreqy
+61. meanoffbodyaccmeanfreqz
+62. meanoffbodyaccjerkmeanx
+63. meanoffbodyaccjerkmeany
+64. meanoffbodyaccjerkmeanz
+65. meanoffbodyaccjerkmeanfreqx
+66. meanoffbodyaccjerkmeanfreqy
+67. meanoffbodyaccjerkmeanfreqz
+68. meanoffbodygyromeanx
+69. meanoffbodygyromeany
+70. meanoffbodygyromeanz
+71. meanoffbodygyromeanfreqx
+72. meanoffbodygyromeanfreqy
+73. meanoffbodygyromeanfreqz
+74. meanoffbodyaccmagmean
+75. meanoffbodyaccmagmeanfreq
+76. meanoffbodybodyaccjerkmagmean
+77. meanoffbodybodyaccjerkmagmeanfreq
+78. meanoffbodybodygyromagmean
+79. meanoffbodybodygyromagmeanfreq
+80. meanoffbodybodygyrojerkmagmean
+81. meanoffbodybodygyrojerkmagmeanfreq
+82. meanofangletbodyaccmeangravity
+83. meanofangletbodyaccjerkmeangravitymean
+84. meanofangletbodygyromeangravitymean
+85. meanofangletbodygyrojerkmeangravitymean
+86. meanofanglexgravitymean
+87. meanofangleygravitymean
+88. meanofanglezgravitymean
+
 ##Below are listed the original UCI HAR Dataset variable names followed by information describing their meaning
 
 1. tBodyAcc-mean()-X
