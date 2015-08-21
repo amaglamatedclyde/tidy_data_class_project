@@ -11,7 +11,7 @@ The original dataset, found at <http://archive.ics.uci.edu/ml/datasets/Human+Act
 
 * in the next step of the script, we extract the descriptive names of the variables from the file 'features.txt' and replace the column names of the complete_set table with these names. The explanation of these names can be found in the code book provided in this repository and originate in the file 'feature_info.txt', the text of which has been appended to the Code Book. It should be noted that not all of the orginal variable names are valid R variable names so the make.names() function is used to legalize them.
 
-* Next we subset the variables of interest from the table using dplyr select(). These are all of the variables that are calculated means or standard deviations. I've chosen to include all varibles with the word 'mean' in the title, rather than arbitrarily eliminate them because they don't follow the pattern of indicating a mean function has been applied by using parentheses, i.e. "mean().""
+* Next we subset the variables of interest from the table using dplyr select(). These are all of the variables that are calculated means or standard deviations. I've chosen to include all varibles with the word 'mean' in the title, rather than arbitrarily eliminate them because they don't follow the pattern of indicating a mean function has been applied by using parentheses, i.e. "mean()."
 
 * At this step the 'label' column consists of integer values that correspond to the activites performed when test subject measurements were taken. We create a column 'activity' and substitute the descriptive names of the activities as they correspond to the integer values, and after delete the 'label' column.
 
