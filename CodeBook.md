@@ -1,8 +1,8 @@
 #Tidy Data Code Book
 ##This document contains the following information:
 * Final variable names for the table produced by the run_analysis.R script.
-* Original varaible names from the UCI HAR Dataset
-* The original explanatory descritions of the naming conventions and the measurements they name.
+* Original variable names from the UCI HAR Dataset
+* The original explanatory descriptions of the naming conventions and the measurements they name.
 
 The final variable names for the summary_table are listed below. These were derived in the following manner:
 
