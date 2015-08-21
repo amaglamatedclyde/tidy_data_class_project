@@ -1,14 +1,14 @@
 #Tidy Data Code Book
 ##This document contains the following information:
-*Final variable names for the table produced by the run_analysis.R script.
-*Original varaible names from the UCI HAR Dataset
-*The original explanatory descritions of the naming conventions and the measurements they name.
+* Final variable names for the table produced by the run_analysis.R script.
+* Original varaible names from the UCI HAR Dataset
+* The original explanatory descritions of the naming conventions and the measurements they name.
 
 The final variable names for the summary_table are listed below. These were derived in the following manner:
 
-*A subset of the original variables from the UCI HAR Dataset was created by selecting all variables with mean, mean() and std() in the variable names.
-*The names were prepended by "meanof" to indicate that the operations on the dataset produced a summary table by calculating the mean of each variable in the subset.
-*In accordance with best practices for R variable names, the variables were converted to lower case and all of the following characters were removed: ._()
+* A subset of the original variables from the UCI HAR Dataset was created by selecting all variables with mean, mean() and std() in the variable names.
+* The names were prepended by "meanof" to indicate that the operations on the dataset produced a summary table by calculating the mean of each variable in the subset.
+* In accordance with best practices for R variable names, the variables were converted to lower case and all of the following characters were removed: ._()
 
 ###Final Variable Names
 1. activity
