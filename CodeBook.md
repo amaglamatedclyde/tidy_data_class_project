@@ -1,7 +1,8 @@
 #Tidy Data Code Book
 ##This document contains the following information:
 * Final variable names for the table produced by the run_analysis.R script.
-* Original variable names from the UCI HAR Dataset
+* The corresponding subset of original varable names rom the UCI HAR Dataset.
+* The complete set of variable names from the UCI HAR Dataset.
 * The original explanatory descriptions of the naming conventions and the measurements they name.
 
 The final variable names for the summary_table are listed below. These were derived in the following manner:
@@ -100,7 +101,7 @@ The final variable names for the summary_table are listed below. These were deri
 87. meanofangleygravitymean
 88. meanofanglezgravitymean
 
-##This next list is the corresponding subset of the original variable names chosen for this analysis. Note that, for correspondence, the list numbering starts at "3" because the 'activity' and 'subject variables are added by the run_analysis script. The complete set of original variable names follows this subset.
+####This next list is the corresponding subset of the original variable names chosen for this analysis. Note that, for correspondence, the list numbering starts at "3" because the 'activity' and 'subject variables are added by the run_analysis script. The complete set of original variable names follows this subset.
 
 3. tBodyAcc-std()-X
 4. tBodyAcc-std()-Y
