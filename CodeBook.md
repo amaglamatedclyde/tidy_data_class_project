@@ -100,8 +100,7 @@ The final variable names for the summary_table are listed below. These were deri
 87. meanofangleygravitymean
 88. meanofanglezgravitymean
 
-##This next list is the subset of the original variable names chosen for this analysis, followed by the complete
-##original variable names list.
+##This next list is the subset of the original variable names chosen for this analysis, followed by the complete original variable names list.
 
 1. tBodyAcc-mean()-X
 2. tBodyAcc-mean()-Y
