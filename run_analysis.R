@@ -2,8 +2,7 @@
 # Uncomment the lines below to download the original file into an EMPTY directory and unzip it.
 
 # setwd(<choose an empty directory for the project>)
-# download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", 
-#"project_data.zip", method = "curl")
+# download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip","project_data.zip", method = "libcurl")
 # data_folders <- list.files() #returns only one filename, "project_data.zip" because we started with an empty directory
 # 
 # # we unzip the downloaded data file which creates a directory structure in our project folder. 
