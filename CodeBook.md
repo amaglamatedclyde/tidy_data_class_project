@@ -8,7 +8,7 @@ The final variable names for the summary_table are listed below. These were deri
 
 * A subset of the original variables from the UCI HAR Dataset was created by selecting all variables with mean, mean() and std() in the variable names.
 * The existing names were prepended by "meanof" to indicate that the operations on the dataset produced a summary table by calculating the mean of each variable in the subset for each activity across the 30 test subjects.
-* In accordance with best practices for R variable names, the variables were converted to lower case and all of the following characters were removed: ._()
+* In accordance with best practices for R variable names, the variables were converted to lower case and all of the following characters were removed: -._()
 
 ###Final Variable Names
 1. activity
