@@ -2,7 +2,8 @@
 # Uncomment the lines below to download the original file into an EMPTY directory and unzip it.
 
 # setwd(<choose an empty directory for the project>)
-# download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", "project_data.zip", method = "curl")
+# download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", 
+#"project_data.zip", method = "curl")
 # data_folders <- list.files() #returns only one filename, "project_data.zip" because we started with an empty directory
 # 
 # # we unzip the downloaded data file which creates a directory structure in our project folder. 
@@ -48,21 +49,25 @@ rm(list = c("test_set", "test_set_complete", "test_set_labels", "test_set_subjec
 feature_label_path <- "UCI HAR Dataset/features.txt"
 feature_table <- read.table(feature_label_path, stringsAsFactors = FALSE)
 feature_names <- as.vector(feature_table[,2])
-feature_names <- append(feature_names, c("subject", "label"), after = length(feature_names))#add the names of the 2 columns we created
+feature_names <- append(feature_names, c("subject", "label"), after = length(feature_names))#add the names of the 2 columns
+#we created
 if(!identical(make.names(feature_names), feature_names))
-  {feature_names <-  make.names(feature_names, unique = TRUE)} #be sure the var names are valid R names, some original names contain ()
+  {feature_names <-  make.names(feature_names, unique = TRUE)} #be sure the var names are valid R names, 
+#some original names contain ()
 complete_set_with_feature_named_cols <- `colnames<-`(complete_set, feature_names) #finally add the feature names as colnames
 
 rm(list = c("complete_set", "feature_table", "feature_names", "feature_label_path")) #optionally clean-up environment
 
-#subset the data to retain only variables with "mean" and "std(). see README.md for explanation
-variables_of_interest <- select(complete_set_with_feature_named_cols, contains("std.."), contains("mean"), subject, label) #select columns with mean and std
+#subset the data to retain only variables with "mean" and "std()". see README.md for explanation
+variables_of_interest <- select(complete_set_with_feature_named_cols, contains("std.."), contains("mean"), 
+                                subject, label) #select columns with mean and std
 
 rm(complete_set_with_feature_named_cols) #optionally clean-up environment
 
 # use descriptive activity names instead of "label" column integer values
 activity_table <- read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors = FALSE)
-activity_list <- as.list(activity_table[,2]) # here was take a 2-col table and make a list so we can look up names based on integers
+activity_list <- as.list(activity_table[,2]) # here we take a 2-col table and make a list so we can look up names 
+#corresponding to integers
 label_column <- variables_of_interest[["label"]] #extract the label col as a vector
 exchange <- function(item){activity_list[[item]]} #create a utility function to transform labels into activity names
 activity <- sapply(label_column, exchange) #create activity column as vector
@@ -75,7 +80,8 @@ rm(list = c("activity", "activity_list"))
 summary_table <- group_by(variables_of_interest, activity, subject)
 rm(list = c("variables_of_interest", "activity_table", "exchange", "label", "label_column", "subject"))
 summary_table <- summarise_each(summary_table, funs(mean))
-colnames(summary_table)[3:88] <- paste("meanof", colnames(summary_table)[3:88], sep = "") #make sure we update the var names to reflect the operations performed by summarize_each()
+colnames(summary_table)[3:88] <- paste("meanof", colnames(summary_table)[3:88], sep = "") #make sure we update 
+#the var names to reflect the operations performed by summarize_each()
 
 #format variable names as recommended in video lecture Week 4 "Editing Text Variables"
 colnames(summary_table) <- tolower(colnames(summary_table))
