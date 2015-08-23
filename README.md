@@ -13,7 +13,7 @@ The original dataset, found at <http://archive.ics.uci.edu/ml/datasets/Human+Act
 
 * Next we subset the variables of interest from the complete_set table using dplyr select(). The subset consists of all variables that represent mean values or standard deviations. I've chosen to include all variables with the word 'mean' in the name, rather than arbitrarily eliminate some because they don't follow the pattern of indicating a mean function has been applied by using parentheses, i.e. "mean()."
 
-* At this step the 'label' column consists of integer values that correspond to the activites performed when test subject measurements were taken. We create a column 'activity' and substitute the descriptive names of the activities as they correspond to the integer values, and after delete the 'label' column.
+* At this step the 'label' column consists of integer values that correspond to the activites performed when test subject measurements were taken. We create a column 'activity' and substitute the descriptive names of the activities as they correspond to the integer values, and then delete the 'label' column.
 
 * To create the final table of interest, we group the set of variables-of-interest by activity and subject. We then calculate the mean for activity variables across all subjects. This is supplied as the summary_table.
 
